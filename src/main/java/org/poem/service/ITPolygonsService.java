@@ -39,4 +39,9 @@ public interface ITPolygonsService extends IService<TPolygons> {
      */
     boolean existPolygons(PolygonsExistsVO polygonsExistsVO);
 
+    /**
+     * 删除区域
+     * @param provider
+     */
+    void dropPolygon(Long provider);
 }

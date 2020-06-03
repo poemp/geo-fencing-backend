@@ -12,6 +12,7 @@ import org.poem.vo.PolygonsDetailVO;
 import org.poem.vo.PolygonsExistsVO;
 import org.poem.vo.PolygonsVO;
 import org.springframework.stereotype.Service;
+import org.springframework.util.CollectionUtils;
 
 import java.awt.geom.Point2D;
 import java.time.LocalDateTime;
@@ -96,6 +97,20 @@ public class TPolygonsServiceImpl extends ServiceImpl<TPolygonsMapper, TPolygons
                     return new Point2D.Double(o.getLat(), o.getLng());
                 }
         ).collect(Collectors.toList());
+        if (CollectionUtils.isEmpty(pts)){
+            return false;
+        }
         return InOrOutPolygonUtils.IsPtInPoly(d1, pts);
+    }
+
+    /**
+     * 删除围栏
+     * @param provider
+     */
+    @Override
+    public void dropPolygon(Long provider) {
+        QueryWrapper<TPolygons> tPolygonsQueryWrapper = new QueryWrapper<>();
+        tPolygonsQueryWrapper.lambda().eq(TPolygons::getProviderId, provider);
+        this.remove(tPolygonsQueryWrapper);
     }
 }
