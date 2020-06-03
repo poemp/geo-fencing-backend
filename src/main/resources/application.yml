@@ -1,0 +1,22 @@
+server:
+  port: ${global.geo-fencing-backend.port}
+spring:
+  profiles:
+    include: global
+  application:
+    name: ${global.geo-fencing-backend.server-name}
+  main:
+    allow-bean-definition-overriding: true
+  datasource:
+    driver-class-name: ${global.datasource.service.driver-class-name}
+    url: ${global.datasource.service.url}
+    username: ${global.datasource.service.username}
+    password: ${global.datasource.service.password}
+  flyway:
+    locations: classpath:db_migration
+    enabled: true
+    encoding: UTF-8
+mybatis-plus:
+  configuration:
+    aggressive-lazy-loading: true
+  mapper-locations: classpath:mapper/**/*.xml

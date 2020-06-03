@@ -1,0 +1,13 @@
+global:
+  nacos:
+    server-addr: 192.168.71.128:8848
+  datasource:
+    service:
+      type: com.alibaba.druid.pool.DruidDataSource
+      driver-class-name: com.mysql.cj.jdbc.Driver
+      url: jdbc:mysql://90service:2019/geo-fencing?useUnicode=true&characterEncoding=UTF-8&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=Asia/Shanghai
+      username: root
+      password: 123456 
+  geo-fencing-backend:
+    server-name: geo-fencing-backend
+    port: 8081
